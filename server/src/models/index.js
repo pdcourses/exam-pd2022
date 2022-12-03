@@ -51,13 +51,6 @@ sequelize
 
 
 /*
-db[ 'Users' ].hasMany(db[ 'Offers' ],
-  { foreignKey: 'userId', targetKey: 'id' });
-db[ 'Users' ].hasMany(db[ 'Contests' ],
-  { foreignKey: 'userId', targetKey: 'id' });
-db[ 'Users' ].hasMany(db[ 'Ratings' ],
-  { foreignKey: 'userId', targetKey: 'id' });
-
 db[ 'Offers' ].belongsTo(db[ 'Users' ],
   { foreignKey: 'userId', sourceKey: 'id' });
 db[ 'Offers' ].belongsTo(db[ 'Contests' ],
