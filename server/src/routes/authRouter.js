@@ -1,7 +1,7 @@
 // /api/auth/
 
 const authRouter = require("express");
-const userController = require("./../controllers/userController.js");
+const authController = require("./../controllers/authController/js");
 const hashPass = require('../middlewares/hashPassMiddle');
 const validators = require('../middlewares/validators');
 
@@ -9,13 +9,13 @@ authRouter.post(
     '/registration',
     validators.validateRegistrationData,
     hashPass,
-    userController.registration,
+    authController.registration,
   );
   
 authRouter.post(
     '/login',
     validators.validateLogin,
-    userController.login,
+    authController.login,
   );
 
 module.exports = authRouter;
