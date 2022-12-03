@@ -10,12 +10,12 @@ const upload = require('../utils/fileUpload');
 const router = express.Router();
 
 
-// authRouter  /auth
+// authRouter  /api/auth
 
 const authRouter = require('./routes/authRouter.js');
 router.use('/auth', authRouter);
 
-// contestRouter /contests
+// contestRouter /api/contests
 
 const contestRouter = require('./routes/contestRouter.js');
 router.use('/contests', contestRouter);
