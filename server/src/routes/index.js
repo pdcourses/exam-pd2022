@@ -9,6 +9,9 @@ const chatController = require('../controllers/chatController');
 const upload = require('../utils/fileUpload');
 const router = express.Router();
 
+
+// authRouter  /auth
+
 router.post(
   '/registration',
   validators.validateRegistrationData,
@@ -22,20 +25,12 @@ router.post(
   userController.login,
 );
 
+// contestRouter /contests
+
 router.post(
   '/dataForContest',
   checkToken.checkToken,
   contestController.dataForContest,
-);
-
-router.post(
-  '/pay',
-  checkToken.checkToken,
-  basicMiddlewares.onlyForCustomer,
-  upload.uploadContestFiles,
-  basicMiddlewares.parseBody,
-  validators.validateContestCreation,
-  userController.payment,
 );
 
 router.post(
@@ -59,6 +54,17 @@ router.post(
 );
 
 router.post(
+  '/updateContest',
+  checkToken.checkToken,
+  upload.updateContestFile,
+  contestController.updateContest,
+);
+
+
+
+// userRouter /users
+
+router.post(
   '/getUser',
   checkToken.checkAuth,
 );
@@ -67,13 +73,6 @@ router.get(
   '/downloadFile/:fileName',
   checkToken.checkToken,
   contestController.downloadFile,
-);
-
-router.post(
-  '/updateContest',
-  checkToken.checkToken,
-  upload.updateContestFile,
-  contestController.updateContest,
 );
 
 router.post(
@@ -105,12 +104,7 @@ router.post(
   userController.updateUser,
 );
 
-router.post(
-  '/cashout',
-  checkToken.checkToken,
-  basicMiddlewares.onlyForCreative,
-  userController.cashout,
-);
+// chatRouter /chat
 
 router.post(
   '/newMessage',
@@ -177,5 +171,25 @@ router.post(
   checkToken.checkToken,
   chatController.getCatalogs,
 );
+
+
+// payRouter  /pay
+router.post(
+  '/pay',
+  checkToken.checkToken,
+  basicMiddlewares.onlyForCustomer,
+  upload.uploadContestFiles,
+  basicMiddlewares.parseBody,
+  validators.validateContestCreation,
+  userController.payment,
+);
+
+router.post(
+  '/cashout',
+  checkToken.checkToken,
+  basicMiddlewares.onlyForCreative,
+  userController.cashout,
+);
+
 
 module.exports = router;
