@@ -43,11 +43,12 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-
+/*
 sequelize
   .sync({ force: true })
   .then((data) => console.log("db sync is done. db was updated"))
   .catch((err) => console.log("error with db sync"));
+*/
 
 
 /*

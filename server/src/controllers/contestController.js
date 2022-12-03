@@ -1,4 +1,5 @@
-const db = require('../models');
+const db = require('../models');   //db.User.update()
+// const {User, Contest} = require('../models');
 const ServerError =require('../errors/ServerError');
 const contestQueries = require('./queries/contestQueries');
 const userQueries = require('./queries/userQueries');
